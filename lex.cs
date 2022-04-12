@@ -1,28 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-/**
- * This lab is the FIRST part of a parser lab.  This week we focus on lexing. 
- * Eventually, we will build a parser for a simple language that supports assignments
- *     var = expr
- * Typeing an expression by itself will display the value of the expression
- *
- * Tokens:
- *      ID:  Any letter followed be a sequence of letters and numbers
- *      REAL: An optional sign followed by a sequence of digits, optionally with single decimal point. 
- *      WS:  Whitespace (no tokens generated, this is skipped)
- *      LPAREN, RPAREN, EQUALS:  (, ), and = literals
- *      OP_PLUS, OP_MINUS: + and - literals
- *      OP_MULTIPLY, OP_DIVIDE:  * and / literals
- *      OP_EXPONENT: ** literal (x**2 is "x squared"). 
- *Grammar:
- *      <stmt> ::= <assign> | <expr>
- *      <assign> ::= ID = <expr>
- *      <expr> ::= <term> | <term> + <expr> | <term> - <expr>
- *      <term> ::= <factor> | <factor> * <term> | <factor> / <term>
- *      <factor> ::= <base>**<factor> | <base>
- *      <base> := ID | NUM |  (<expr>)
- */
 public class ExpressionParser {
     
     public enum Symbol
@@ -51,13 +29,13 @@ public class ExpressionParser {
         int column = 1;
         System.Text.StringBuilder lexeme = new System.Text.StringBuilder();
 
-    
+        yield return null;
     }
 
     public static void Main(string[] args){
         try {
             foreach (Node n in tokenize(new System.IO.StreamReader(Console.OpenStandardInput()))){
-                Console.WriteLine($"{Enum.GetName(typeof(Symbol), n.symbol),-15}\t{n.text}");
+                //Console.WriteLine($"{n.Symbol,-15}\t{n.Text}");
             }
         } catch (Exception e){
             Console.WriteLine(e.Message);
